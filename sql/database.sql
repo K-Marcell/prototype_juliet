@@ -53,6 +53,14 @@ CREATE TABLE channel_message_data(
   CONSTRAINT messagedifferentiator PRIMARY KEY(messageid)
 );
 
+CREATE TABLE server_role_data(
+  serverid BIGINT NOT NULL,
+  roleid BIGINT NOT NULL,
+  roleperms TEXT NOT NULL,
+  rolename VARCHAR(32) NOT NULL,
+  CONSTRAINT roledifferentiator PRIMARY KEY(roleid)
+);
+
 /*user creation template*/
 INSERT INTO
   user_data(
@@ -139,4 +147,25 @@ VALUES
     $ messageauthor,
     $ messagecontent,
     $ messageattachment
+  );
+
+/*role creation template*/
+INSERT INTO
+  server_role_data(
+    serverid,
+    roleid,
+    roleperms,
+    rolename
+  )
+VALUES
+  (
+    $ serverid,
+    (
+      SELECT
+        MAX(roleid)
+      FROM
+        server_role_data
+    ) + 1,
+    $ perms,
+    $ rolename
   );
