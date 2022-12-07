@@ -23,6 +23,7 @@ CREATE TABLE user_data(
   useremail VARCHAR(64) NOT NULL,
   userverified BOOLEAN NOT NULL,
   userprofimg VARCHAR(255) NOT NULL,
+  userdescription TEXT,
   CONSTRAINT userprofile PRIMARY KEY (userid, useremail)
 );
 
@@ -69,7 +70,8 @@ INSERT INTO
     userpassword,
     useremail,
     userverified,
-    userprofimg
+    userprofimg,
+    userdescription
   )
 VALUES
   (
@@ -83,7 +85,8 @@ VALUES
     $ userpassword,
     $ useremail,
     false,
-    $ userprofimg
+    $ userprofimg,
+    $ userdescription
   );
 
 /*server creation template*/
