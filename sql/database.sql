@@ -50,7 +50,7 @@ CREATE TABLE channel_message_data(
   messageid BIGINT NOT NULL,
   messageidauthor BIGINT NOT NULL,
   messagecontent TEXT NOT NULL,
-  messageattachment TEXT,
+  messageattachment BLOB,
   CONSTRAINT messagedifferentiator PRIMARY KEY(messageid)
 );
 
